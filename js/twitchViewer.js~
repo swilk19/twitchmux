@@ -1,0 +1,39 @@
+var twitchViewer = angular.module('twitchViewer', ['ui.bootstrap']);
+
+twitchViewer.controller('twitchViewerCtrl', function($scope, $log, $http) {
+  $log.log("Hello World!");
+    
+  $scope.oneAtATime = true;
+
+  $scope.games = [];
+
+  $scope.items = ['Item 1', 'Item 2', 'Item 3'];
+
+  $scope.status = {
+    isFirstOpen: true,
+    isFirstDisabled: false
+  };
+  
+  $http.defaults.headers.common["X-Custom-Header"] = "Angular.js";
+  var getTopGames = function() {
+    $http.jsonp('https://api.twitch.tv/kraken/games/top', {params:{'callback':'JSON_CALLBACK'}, "headers":"59q91785fnuyflproxefy3zldavt7zc"}).
+      success(function(data) {
+        $log.log(data);
+        $log.log(data.top);
+        $scope.games = data.top;
+        for (index in $scope.games) {
+          $http.jsonp('https://api.twitch.tv/kraken/streams'
+        }
+
+      }).error(function(data) {
+        $log.log("Error thing.");
+        $log.log(data);
+      });
+  }
+  
+
+  
+  getTopGames();
+  
+//  $log.log($scope.apiLinks);
+});

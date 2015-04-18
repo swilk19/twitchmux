@@ -1,0 +1,15 @@
+
+events.js:72
+        throw er; // Unhandled 'error' event
+              ^
+Error: listen EACCES
+    at errnoException (net.js:904:11)
+    at Server._listen2 (net.js:1023:19)
+    at listen (net.js:1064:10)
+    at Server.listen (net.js:1138:5)
+    at Function.app.listen (/home/swilk/Projects/TwitchViewerJS/node_modules/connect/lib/proto.js:188:24)
+    at Object.<anonymous> (/home/swilk/Projects/TwitchViewerJS/server.js:3:39)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)

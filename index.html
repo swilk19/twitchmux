@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en" ng-app="twitchViewer">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>TwitchViewer</title>
+
+
+    <!-- Custom styles for this template -->
+    <link href="css/grid.css" rel="stylesheet">
+    
+    <!--Angular UI -->
+    <script src="js/angular.min.js"> </script>
+    <script src="js/ui-bootstrap-tpls-0.12.0.min.js"> </script>
+    
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    
+    <!-- Twitch Viewer App -->
+    <script src="js/twitchViewer.js"> </script>
+    
+  </head>
+
+  <body ng-controller="twitchViewerCtrl">
+    <div class="col-md-2">
+    <accordion close-others="oneAtATime">
+      <accordion-group heading="{{game.game.name}}" ng-repeat="game in games" is-open="game.open">
+        <tabset vertical="true" type="pills" active="false">
+          <tab heading="{{stream.channel.display_name}}" ng-repeat="stream in game.game.streams" select="twitchUrl = stream.channel.url" ng-click="selectStream(stream)"></tab>
+        </tabset>
+      </accordion-group>
+    </accordion>
+    </div>
+    <div id="twitchframe" class="col-md-8">
+        <iframe src="{{twitchStreamUrl}}" frameborder="0" style="height: 100%; width: 100%;"></iframe>
+    </div>
+    <div id="chatframe" class="col-md-2">
+      <iframe src="{{twitchChatUrl}}" frameborder="0" style="height: 100%; width: 100%;"></iframe>
+    </div>
+  </body>
+</html>
+
